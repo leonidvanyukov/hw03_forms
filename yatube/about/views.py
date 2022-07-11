@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
 
@@ -10,4 +9,3 @@ class AboutAuthorView(TemplateView):
 # Описать класс AboutTechView для страницы about/tech
 class AboutTechView(TemplateView):
     template_name = 'about/tech.html'
-

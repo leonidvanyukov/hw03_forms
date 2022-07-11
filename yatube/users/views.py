@@ -21,4 +21,3 @@ class PasswordReset(CreateView):
     form_class = PasswordResetForm
     success_url = reverse_lazy('posts:home')
     template_name = 'users/password_reset_form.html'
-
