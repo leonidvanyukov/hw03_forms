@@ -4,7 +4,7 @@ from django.urls import path
 from . import views
 
 app_name = 'users'
-
+template = 'users/password_reset_form.html'
 urlpatterns = [
     path('signup/', views.SignUp.as_view(), name='signup'),
     path(
@@ -18,7 +18,7 @@ urlpatterns = [
     ),
     path(
         'password_reset/',
-        PasswordResetView.as_view(template_name='users/password_reset_form.html'),
+        PasswordResetView.as_view(template_name=template),
         name='password_reset_form'
     ),
 ]
