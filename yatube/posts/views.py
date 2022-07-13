@@ -34,7 +34,7 @@ def profile(request, username):
     page_obj = create_paginator(author_posts, request.GET.get('page'))
     posts_count = count_elements(author_posts)
     context = {
-        'user': author,
+        'username': author,
         'page_obj': page_obj,
         'posts_count': posts_count
     }
