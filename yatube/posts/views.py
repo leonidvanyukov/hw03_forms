@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render, get_list_or_404
 
 from .forms import PostForm
 from .models import Group, Post, User
@@ -34,7 +34,7 @@ def profile(request, username):
     page_obj = create_paginator(author_posts, request.GET.get('page'))
     posts_count = count_elements(author_posts)
     context = {
-        'username': author,
+        'author': author,
         'page_obj': page_obj,
         'posts_count': posts_count
     }
@@ -43,8 +43,8 @@ def profile(request, username):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    posts = get_object_or_404(User, username=post.author)
-    posts_count = posts.posts.count()
+    posts = get_list_or_404(Post, author=post.author)
+    posts_count = len(posts)
     context = {
         'post': post,
         'posts_count': posts_count,
