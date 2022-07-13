@@ -44,8 +44,8 @@ def profile(request, username):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    posts = get_list_or_404(Post, author=post.author)
-    posts_count = len(posts)
+    posts = Post.objects.filter(author__exact=post.author).count()
+    posts_count = posts
     context = {
         'post': post,
         'posts_count': posts_count,
